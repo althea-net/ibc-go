@@ -45,7 +45,7 @@ func (msg MsgChannelOpenInit) ValidateBasic() error {
 	}
 	_, err := sdk.AccAddressFromBech32(msg.Signer)
 	if err != nil {
-		return sdkerrors.Wrapf(sdkerrors.ErrInvalidAddress, "string could not be parsed as address: %v", err)
+		return sdkerrors.Wrapf(sdkerrors.ErrInvalidAddress, "string %v could not be parsed as address: %v", msg.Signer, err)
 	}
 	return msg.Channel.ValidateBasic()
 }
